@@ -1,0 +1,46 @@
+{
+  "categories": [
+    {
+      "id": "motivation",
+      "name": "Motivation",
+      "description": "Quotes to inspire action and drive",
+      "icon": "💪",
+      "color": "#FF6B6B"
+    },
+    {
+      "id": "spiritual",
+      "name": "Spiritual",
+      "description": "Wisdom for the soul and spirit",
+      "icon": "🕉️",
+      "color": "#4ECDC4"
+    },
+    {
+      "id": "inspiration",
+      "name": "Inspiration",
+      "description": "Uplifting thoughts and ideas",
+      "icon": "✨",
+      "color": "#45B7D1"
+    },
+    {
+      "id": "faith",
+      "name": "Faith",
+      "description": "Religious and spiritual guidance",
+      "icon": "🙏",
+      "color": "#96CEB4"
+    },
+    {
+      "id": "love",
+      "name": "Love",
+      "description": "Quotes about relationships and compassion",
+      "icon": "❤️",
+      "color": "#FFEAA7"
+    },
+    {
+      "id": "success",
+      "name": "Success",
+      "description": "Achievement and goal-oriented wisdom",
+      "icon": "🏆",
+      "color": "#DDA0DD"
+    }
+  ]
+}

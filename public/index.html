@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InkSpire - Wisdom Illuminated, One Quote at a Time</title>
+
+    <!-- Meta tags -->
+    <meta
+      name="description"
+      content="Daily inspirational quotes from Bible, Bhagavad Gita, Quran, films, and famous people with stunning visual backgrounds"
+    />
+    <meta property="og:title" content="InkSpire - Daily Inspirational Quotes" />
+    <meta
+      property="og:description"
+      content="Wisdom Illuminated, One Quote at a Time"
+    />
+    <meta property="og:type" content="website" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="https://res.cloudinary.com/doorknc98/image/upload/v1754926748/quote/logo_toljgr.png"
+      type="image/png"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Your CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+      <div class="loading-content">
+        <img src="images/logo.png" alt="InkSpire Logo" class="loading-logo" />
+        <h2>InkSpire</h2>
+        <p>Wisdom Illuminated, One Quote at a Time</p>
+        <div class="loading-spinner"></div>
+      </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="app" class="app-container" style="display: none">
+      <!-- Enhanced Header -->
+      <header class="header">
+        <div class="header-content">
+          <div class="logo-section">
+            <img
+              src="images/logo.png"
+              alt="InkSpire Logo"
+              class="header-logo"
+            />
+            <h1>InkSpire</h1>
+          </div>
+          <div class="tagline">
+            <p>Wisdom Illuminated, One Quote at a Time</p>
+            <!-- Spiraling leaves animation -->
+            <div class="spiraling-leaves">
+              <span class="leaf">🍃</span>
+              <span class="leaf">🌿</span>
+              <span class="leaf">🍀</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Quote Display -->
+      <main class="main-content">
+        <!-- Enhanced Quote Card with Dynamic Background -->
+        <div class="quote-card" id="quote-card">
+          <!-- Dynamic background image container -->
+          <div class="quote-background" id="quote-background">
+            <!-- Background image will be set dynamically via JavaScript -->
+          </div>
+
+          <!-- Quote content overlay -->
+          <div class="quote-content">
+            <div class="quote-text-container">
+              <blockquote class="quote-text" id="quote-text">
+                Loading your daily inspiration...
+              </blockquote>
+
+              <cite class="quote-author" id="quote-author">
+                <!-- Author will be loaded -->
+              </cite>
+
+              <div class="quote-meta" id="quote-meta">
+                <span class="quote-source" id="quote-source"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Enhanced click indicator -->
+          <div class="click-indicator">
+            <i class="fas fa-magic"></i>
+            <span>Discover</span>
+          </div>
+        </div>
+      </main>
+
+      <!-- Enhanced Quote Detail Modal -->
+      <div id="quote-modal" class="quote-modal" style="display: none">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 id="modal-title">Today's Wisdom</h3>
+            <button class="close-btn" id="close-modal" aria-label="Close modal">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+
+          <div class="modal-body">
+            <blockquote class="modal-quote" id="modal-quote-text">
+              <!-- Quote text -->
+            </blockquote>
+
+            <cite class="modal-author" id="modal-author">
+              <!-- Author -->
+            </cite>
+
+            <div class="modal-description" id="modal-description">
+              <!-- Full description (5-6 sentences) -->
+            </div>
+
+            <div class="modal-tags" id="modal-tags">
+              <!-- Tags will be displayed as chips -->
+            </div>
+          </div>
+
+          <!-- Modal Actions (Future Enhancement) -->
+          <div class="modal-actions" style="display: none">
+            <button class="modal-btn share-btn" id="share-modal-btn">
+              <i class="fas fa-share-alt"></i>
+              Share Wisdom
+            </button>
+            <button class="modal-btn favorite-btn" id="favorite-modal-btn">
+              <i class="fas fa-heart"></i>
+              Save Quote
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Simple Footer -->
+      <footer class="footer">
+        <p>&copy; 2025 InkSpire. Built for Pi Network Community</p>
+        <p>Wisdom Illuminated, One Quote at a Time</p>
+      </footer>
+    </div>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+
+    <!-- Your JavaScript -->
+    <script src="js/script.js"></script>
+
+    <!-- Error handling for missing images -->
+    <script>
+      // Handle image loading errors gracefully
+      window.addEventListener(
+        "error",
+        function (e) {
+          if (e.target.tagName === "IMG" || e.target.style.backgroundImage) {
+            console.log("Image loading error handled gracefully");
+          }
+        },
+        true
+      );
+    </script>
+  </body>
+</html>

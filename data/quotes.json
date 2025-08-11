@@ -1,0 +1,52 @@
+{
+  "quotes": {
+    "2025-08-11": {
+      "id": 1,
+      "text": "You have the right to perform your actions, but you are not entitled to the fruits of action.",
+      "author": "Bhagavad Gita 2.47",
+      "description": "This profound verse from the Bhagavad Gita teaches the principle of Nishkama Karma - performing one's duty without attachment to results. It emphasizes focusing on the action itself rather than being driven by desired outcomes, leading to inner peace and spiritual growth.",
+      "tags": ["duty", "detachment", "spiritual_wisdom"],
+      "image_url": "https://res.cloudinary.com/doorknc98/image/upload/v1754926381/quote/68b901eb-7b76-4e50-819b-279c88f10fca.png"
+    },
+    "2025-08-12": {
+      "id": 2,
+      "text": "The way I see it, if you want the rainbow, you gotta put up with the rain.",
+      "author": "Dolly Parton",
+      "description": "This timeless wisdom from country music legend and philanthropist Dolly Parton reminds us that achieving our dreams requires perseverance through difficult times. It's about embracing both the struggles and the rewards that come with pursuing our goals.",
+      "tags": ["perseverance", "optimism", "resilience"],
+      "image_url": "https://res.cloudinary.com/doorknc98/image/upload/v1754925419/quote/19000ce7-4cee-4132-a624-01ff3d66acf9.png"
+    },
+    "2025-08-13": {
+      "id": 3,
+      "text": "Do or do not, there is no try.",
+      "author": "Yoda, Star Wars: The Empire Strikes Back",
+      "description": "One of cinema's most powerful quotes about commitment and mindset. Yoda's wisdom teaches us that half-hearted attempts often lead to failure, while full commitment to action creates the possibility for success. It's about the power of decisive action over hesitation.",
+      "tags": ["commitment", "mindset", "determination"],
+      "image_url": "https://res.cloudinary.com/doorknc98/image/upload/v1754925313/quote/c89d0c73-2c28-44a2-8a63-addd1d1f358f.png"
+    },
+    "2025-08-14": {
+      "id": 4,
+      "text": "You can overcome anything, if and only if you love something enough.",
+      "author": "Lionel Messi",
+      "description": "The football legend shares his philosophy on achieving greatness through passion. This quote emphasizes that deep love and passion for what you do provides the strength to overcome any obstacle or challenge. It's about finding your true calling and letting that love fuel your perseverance.",
+      "tags": ["passion", "perseverance", "greatness"],
+      "image_url": "https://res.cloudinary.com/doorknc98/image/upload/v1754925598/quote/5f21977f-10f4-4c99-9994-0aa1c1983603.png"
+    },
+    "2025-08-15": {
+      "id": 5,
+      "text": "The function of leadership is to produce more leaders, not more followers.",
+      "author": "Ralph Nader",
+      "description": "This powerful insight from activist and political leader Ralph Nader redefines what true leadership means. Instead of building dependency, great leaders empower others to become leaders themselves, creating a multiplying effect of positive change and growth.",
+      "tags": ["leadership", "empowerment", "growth"],
+      "image_url": ""
+    },
+    "2025-08-16": {
+      "id": 6,
+      "text": "Life becomes easier when you learn to accept the apology you never got.",
+      "author": "Robert Brault",
+      "description": "This profound quote about forgiveness and healing teaches us that we don't need others to apologize for us to move forward. By accepting that some apologies may never come, we free ourselves from waiting for closure from others and can create our own peace.",
+      "tags": ["forgiveness", "healing", "inner_peace"],
+      "image_url": ""
+    }
+  }
+}
