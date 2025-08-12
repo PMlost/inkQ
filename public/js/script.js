@@ -267,6 +267,126 @@ function formatDateForDisplay(dateString) {
   });
 }
 
+// ===== UTC TIMER FUNCTIONALITY =====
+let timerInterval = null;
+
+// Add timer elements to the elements object
+const timerElements = {
+  hoursElement: document.getElementById("hours"),
+  minutesElement: document.getElementById("minutes"),
+  secondsElement: document.getElementById("seconds"),
+};
+
+// Calculate time until next UTC day (midnight UTC)
+function getTimeUntilNextUTCDay() {
+  const now = new Date();
+  const utcNow = new Date(now.getTime() + now.getTimezoneOffset() * 60000);
+
+  // Get next UTC midnight
+  const nextMidnight = new Date(utcNow);
+  nextMidnight.setUTCHours(24, 0, 0, 0);
+
+  // Calculate difference in milliseconds
+  const timeDiff = nextMidnight.getTime() - utcNow.getTime();
+
+  // Convert to hours, minutes, seconds
+  const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+  const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+  return { hours, minutes, seconds };
+}
+
+// Format number with leading zero
+function formatTimeUnit(value) {
+  return value.toString().padStart(2, "0");
+}
+
+// Update timer display
+function updateTimer() {
+  try {
+    const timeLeft = getTimeUntilNextUTCDay();
+
+    if (timerElements.hoursElement) {
+      timerElements.hoursElement.textContent = formatTimeUnit(timeLeft.hours);
+    }
+    if (timerElements.minutesElement) {
+      timerElements.minutesElement.textContent = formatTimeUnit(
+        timeLeft.minutes
+      );
+    }
+    if (timerElements.secondsElement) {
+      timerElements.secondsElement.textContent = formatTimeUnit(
+        timeLeft.seconds
+      );
+    }
+
+    // If we've reached the new day, refresh the page to load new quote
+    if (
+      timeLeft.hours === 0 &&
+      timeLeft.minutes === 0 &&
+      timeLeft.seconds === 0
+    ) {
+      console.log("🕛 New UTC day reached! Refreshing for new quote...");
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    }
+  } catch (error) {
+    console.error("Timer update error:", error);
+  }
+}
+
+// Start the timer
+function startUTCTimer() {
+  // Clear any existing timer
+  if (timerInterval) {
+    clearInterval(timerInterval);
+  }
+
+  // Update immediately
+  updateTimer();
+
+  // Update every second
+  timerInterval = setInterval(updateTimer, 1000);
+
+  console.log("⏰ UTC Timer started");
+}
+
+// Stop the timer
+function stopUTCTimer() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+    console.log("⏹️ UTC Timer stopped");
+  }
+}
+
+// Initialize timer elements after DOM is loaded
+function initializeTimer() {
+  // Update timer elements references
+  Object.assign(timerElements, {
+    hoursElement: document.getElementById("hours"),
+    minutesElement: document.getElementById("minutes"),
+    secondsElement: document.getElementById("seconds"),
+  });
+
+  // Check if elements exist
+  if (
+    timerElements.hoursElement &&
+    timerElements.minutesElement &&
+    timerElements.secondsElement
+  ) {
+    startUTCTimer();
+    console.log("✅ UTC Timer initialized successfully");
+  } else {
+    console.error("❌ Timer elements not found in DOM");
+  }
+}
+
+// Add cleanup when page unloads
+window.addEventListener("beforeunload", stopUTCTimer);
+
 // ===== EVENT LISTENERS =====
 function initializeEventListeners() {
   // Quote card click - open modal
@@ -328,6 +448,9 @@ async function initializeApp() {
 
   // Initialize event listeners
   initializeEventListeners();
+
+  // Initialize UTC timer - ADD THIS LINE
+  initializeTimer();
 
   // Load today's quote
   await loadDailyQuote();

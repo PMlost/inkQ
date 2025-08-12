@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>InkSpire - Wisdom Illuminated, One Quote at a Time</title>
+    <title>featherScroll - Unroll your daily inspiration</title>
 
     <!-- Meta tags -->
     <meta
@@ -11,10 +11,7 @@
       content="Daily inspirational quotes from Bible, Bhagavad Gita, Quran, films, and famous people with stunning visual backgrounds"
     />
     <meta property="og:title" content="InkSpire - Daily Inspirational Quotes" />
-    <meta
-      property="og:description"
-      content="Wisdom Illuminated, One Quote at a Time"
-    />
+    <meta property="og:description" content="Unroll your daily inspiration" />
     <meta property="og:type" content="website" />
 
     <!-- Favicon -->
@@ -32,6 +29,9 @@
 
     <!-- Your CSS -->
     <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Your JavaScript -->
+    <script src="js/script.js" defer></script>
   </head>
   <body>
     <!-- Loading Screen -->
@@ -42,8 +42,8 @@
           alt="InkSpire Logo"
           class="loading-logo"
         />
-        <h2>InkSpire</h2>
-        <p>Wisdom Illuminated, One Quote at a Time</p>
+        <h2>featherScroll</h2>
+        <p>Unroll your daily inspiration</p>
         <div class="loading-spinner"></div>
       </div>
     </div>
@@ -59,15 +59,41 @@
               alt="InkSpire Logo"
               class="header-logo"
             />
-            <h1>InkSpire</h1>
+            <h1>featherScroll</h1>
           </div>
           <div class="tagline">
-            <p>Wisdom Illuminated, One Quote at a Time</p>
+            <p>Unroll your daily inspiration</p>
             <!-- Spiraling leaves animation -->
             <div class="spiraling-leaves">
               <span class="leaf">🍃</span>
               <span class="leaf">🌿</span>
               <span class="leaf">🍀</span>
+            </div>
+          </div>
+
+          <!-- Add this in the header section, after the tagline div -->
+          <div class="utc-timer">
+            <div class="timer-icon">
+              <i class="fas fa-globe"></i>
+            </div>
+            <div class="timer-content">
+              <div class="timer-label">Next inspiration in</div>
+              <div class="timer-display" id="utc-timer">
+                <span class="time-unit">
+                  <span class="time-value" id="hours">00</span>
+                  <span class="time-label">h</span>
+                </span>
+                <span class="time-separator">:</span>
+                <span class="time-unit">
+                  <span class="time-value" id="minutes">00</span>
+                  <span class="time-label">m</span>
+                </span>
+                <span class="time-separator">:</span>
+                <span class="time-unit">
+                  <span class="time-value" id="seconds">00</span>
+                  <span class="time-label">s</span>
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -151,16 +177,13 @@
 
       <!-- Simple Footer -->
       <footer class="footer">
-        <p>&copy; 2025 InkSpire. Built for Pi Network Community</p>
-        <p>Wisdom Illuminated, One Quote at a Time</p>
+        <p>&copy; 2025 featherScroll. Built for Pi Network Community</p>
+        <p>Unroll your daily inspiration</p>
       </footer>
     </div>
 
     <!-- Font Awesome for icons -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
-
-    <!-- Your JavaScript -->
-    <script src="js/script.js"></script>
 
     <!-- Error handling for missing images -->
     <script>
