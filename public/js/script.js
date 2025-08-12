@@ -267,7 +267,7 @@ function formatDateForDisplay(dateString) {
   });
 }
 
-// ===== UTC TIMER FUNCTIONALITY =====
+// ===== UTC TIMER FUNCTIONALITY (FIXED FOR IST) =====
 let timerInterval = null;
 
 // Add timer elements to the elements object
@@ -277,17 +277,21 @@ const timerElements = {
   secondsElement: document.getElementById("seconds"),
 };
 
-// Calculate time until next UTC day (midnight UTC)
-function getTimeUntilNextUTCDay() {
+// Calculate time until 5:30 AM IST (which is UTC midnight)
+function getTimeUntilNextQuote() {
   const now = new Date();
-  const utcNow = new Date(now.getTime() + now.getTimezoneOffset() * 60000);
 
-  // Get next UTC midnight
-  const nextMidnight = new Date(utcNow);
-  nextMidnight.setUTCHours(24, 0, 0, 0);
+  // Create next 5:30 AM IST
+  const nextQuoteTime = new Date();
+  nextQuoteTime.setHours(5, 30, 0, 0);
+
+  // If current time is already past 5:30 AM today, move to tomorrow
+  if (now.getHours() > 5 || (now.getHours() === 5 && now.getMinutes() >= 30)) {
+    nextQuoteTime.setDate(nextQuoteTime.getDate() + 1);
+  }
 
   // Calculate difference in milliseconds
-  const timeDiff = nextMidnight.getTime() - utcNow.getTime();
+  const timeDiff = nextQuoteTime.getTime() - now.getTime();
 
   // Convert to hours, minutes, seconds
   const hours = Math.floor(timeDiff / (1000 * 60 * 60));
@@ -305,7 +309,7 @@ function formatTimeUnit(value) {
 // Update timer display
 function updateTimer() {
   try {
-    const timeLeft = getTimeUntilNextUTCDay();
+    const timeLeft = getTimeUntilNextQuote();
 
     if (timerElements.hoursElement) {
       timerElements.hoursElement.textContent = formatTimeUnit(timeLeft.hours);
@@ -321,16 +325,23 @@ function updateTimer() {
       );
     }
 
-    // If we've reached the new day, refresh the page to load new quote
+    // If we've reached 5:30 AM IST, refresh for new quote
     if (
       timeLeft.hours === 0 &&
       timeLeft.minutes === 0 &&
       timeLeft.seconds === 0
     ) {
-      console.log("🕛 New UTC day reached! Refreshing for new quote...");
+      console.log("🕛 5:30 AM IST reached! Refreshing for new quote...");
       setTimeout(() => {
         window.location.reload();
       }, 1000);
+    }
+
+    // Debug logging (remove in production)
+    if (timeLeft.minutes % 10 === 0 && timeLeft.seconds === 0) {
+      console.log(
+        `⏰ Time until next quote: ${timeLeft.hours}h ${timeLeft.minutes}m ${timeLeft.seconds}s`
+      );
     }
   } catch (error) {
     console.error("Timer update error:", error);
@@ -430,6 +441,99 @@ function initializeEventListeners() {
     },
     true
   );
+}
+
+// ===== LOGO ANIMATION FUNCTIONS =====
+function triggerLogoAnimation() {
+  const logo = document.querySelector(".header-logo");
+  const logoContainer = document.querySelector(".logo-container");
+
+  if (!logo || !logoContainer) {
+    console.log("Logo elements not found");
+    return;
+  }
+
+  // Add bounce animation to logo
+  logo.style.animation = "none";
+  logo.offsetHeight; // Trigger reflow
+  logo.style.animation = "gentlePulse 0.6s ease-in-out";
+
+  // Create enhanced ripple effect
+  createRippleEffect(logoContainer);
+
+  // Create sparkle particles
+  createSparkleParticles(logoContainer);
+
+  // Reset logo animation after completion
+  setTimeout(() => {
+    logo.style.animation = "gentlePulse 3s ease-in-out infinite";
+  }, 600);
+
+  console.log("🌊 Logo animation triggered");
+}
+
+// Enhanced ripple effect with multiple rings
+function createRippleEffect(element) {
+  const rect = element.getBoundingClientRect();
+  const colors = [
+    "rgba(102, 126, 234, 0.6)",
+    "rgba(240, 147, 251, 0.5)",
+    "rgba(118, 75, 162, 0.4)",
+    "rgba(102, 126, 234, 0.3)",
+  ];
+
+  // Create 4 enhanced ripple rings
+  for (let i = 0; i < 4; i++) {
+    const ripple = document.createElement("div");
+    ripple.style.cssText = `
+      position: fixed;
+      left: ${rect.left + rect.width / 2}px;
+      top: ${rect.top + rect.height / 2}px;
+      width: 0;
+      height: 0;
+      border: 3px solid ${colors[i]};
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 1000;
+      animation: rippleClickEffect 2s ease-out forwards;
+      animation-delay: ${i * 0.1}s;
+    `;
+    document.body.appendChild(ripple);
+
+    // Remove ripple after animation
+    setTimeout(() => ripple.remove(), 2100);
+  }
+}
+
+// Create sparkle particles effect
+function createSparkleParticles(element) {
+  const rect = element.getBoundingClientRect();
+  const sparkles = ["✨", "⭐", "💫", "🌟", "💖", "🔮"];
+
+  for (let i = 0; i < 8; i++) {
+    const sparkle = document.createElement("div");
+    const randomX = (Math.random() - 0.5) * 100;
+    const randomY = (Math.random() - 0.5) * 100;
+
+    sparkle.innerHTML = sparkles[Math.floor(Math.random() * sparkles.length)];
+    sparkle.style.cssText = `
+      position: fixed;
+      left: ${rect.left + rect.width / 2}px;
+      top: ${rect.top + rect.height / 2}px;
+      font-size: ${Math.random() * 8 + 12}px;
+      pointer-events: none;
+      z-index: 9999;
+      animation: sparkleParticles 2s ease-out forwards;
+      animation-delay: ${i * 0.05}s;
+      --random-x: ${randomX}px;
+      --random-y: ${randomY}px;
+    `;
+    document.body.appendChild(sparkle);
+
+    // Remove sparkle after animation
+    setTimeout(() => sparkle.remove(), 2100);
+  }
 }
 
 // ===== INITIALIZATION =====

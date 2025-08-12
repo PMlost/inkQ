@@ -8,9 +8,12 @@
     <!-- Meta tags -->
     <meta
       name="description"
-      content="Daily inspirational quotes from Bible, Bhagavad Gita, Quran, films, and famous people with stunning visual backgrounds"
+      content="Daily inspirational quotes from Bible, Bhagvad Gita, Quran, films, and famous people with stunning visual backgrounds"
     />
-    <meta property="og:title" content="InkSpire - Daily Inspirational Quotes" />
+    <meta
+      property="og:title"
+      content="featherScroll - Daily Inspirational Quotes"
+    />
     <meta property="og:description" content="Unroll your daily inspiration" />
     <meta property="og:type" content="website" />
 
@@ -39,7 +42,7 @@
       <div class="loading-content">
         <img
           src="https://res.cloudinary.com/doorknc98/image/upload/v1754926748/quote/logo_toljgr.png"
-          alt="InkSpire Logo"
+          alt="featherScroll Logo"
           class="loading-logo"
         />
         <h2>featherScroll</h2>
@@ -54,11 +57,17 @@
       <header class="header">
         <div class="header-content">
           <div class="logo-section">
-            <img
-              src="https://res.cloudinary.com/doorknc98/image/upload/v1754926748/quote/logo_toljgr.png"
-              alt="InkSpire Logo"
-              class="header-logo"
-            />
+            <div class="logo-container" onclick="triggerLogoAnimation()">
+              <img
+                src="https://res.cloudinary.com/doorknc98/image/upload/v1754926748/quote/logo_toljgr.png"
+                alt="featherScroll Logo"
+                class="header-logo"
+              />
+              <!-- Ripple elements -->
+              <div class="logo-ripple ripple-1"></div>
+              <div class="logo-ripple ripple-2"></div>
+              <div class="logo-ripple ripple-3"></div>
+            </div>
             <h1>featherScroll</h1>
           </div>
           <div class="tagline">
@@ -68,32 +77,6 @@
               <span class="leaf">🍃</span>
               <span class="leaf">🌿</span>
               <span class="leaf">🍀</span>
-            </div>
-          </div>
-
-          <!-- Add this in the header section, after the tagline div -->
-          <div class="utc-timer">
-            <div class="timer-icon">
-              <i class="fas fa-globe"></i>
-            </div>
-            <div class="timer-content">
-              <div class="timer-label">Next inspiration in</div>
-              <div class="timer-display" id="utc-timer">
-                <span class="time-unit">
-                  <span class="time-value" id="hours">00</span>
-                  <span class="time-label">h</span>
-                </span>
-                <span class="time-separator">:</span>
-                <span class="time-unit">
-                  <span class="time-value" id="minutes">00</span>
-                  <span class="time-label">m</span>
-                </span>
-                <span class="time-separator">:</span>
-                <span class="time-unit">
-                  <span class="time-value" id="seconds">00</span>
-                  <span class="time-label">s</span>
-                </span>
-              </div>
             </div>
           </div>
         </div>
@@ -129,6 +112,32 @@
           <div class="click-indicator">
             <i class="fas fa-magic"></i>
             <span>Discover</span>
+          </div>
+        </div>
+
+        <!-- Enhanced Floating UTC Timer -->
+        <div class="utc-timer">
+          <div class="timer-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div class="timer-content">
+            <div class="timer-label">Next inspiration</div>
+            <div class="timer-display" id="utc-timer">
+              <span class="time-unit">
+                <span class="time-value" id="hours">00</span>
+                <span class="time-label">h</span>
+              </span>
+              <span class="time-separator">:</span>
+              <span class="time-unit">
+                <span class="time-value" id="minutes">00</span>
+                <span class="time-label">m</span>
+              </span>
+              <span class="time-separator">:</span>
+              <span class="time-unit">
+                <span class="time-value" id="seconds">00</span>
+                <span class="time-label">s</span>
+              </span>
+            </div>
           </div>
         </div>
       </main>
